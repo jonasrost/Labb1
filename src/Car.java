@@ -8,17 +8,10 @@ public abstract class Car implements Movable{
     protected Color color; // Color of the car
     protected String modelName; // The car model name
 
-    protected double xCord; // The x coordinate of the car
-    protected double yCord; // The y coordinate of the car
+    protected double xCord = 0; // The start x coordinate of the car
+    protected double yCord = 0; // The start y coordinate of the car
 
-    protected int direction; // The direction that the car is facing
-    public static final int NORTH = 0;
-    public static final int EAST = 1;
-    public static final int SOUTH = 2;
-    public static final int WEST = 3;
-
-    private static final int[] LEFTTURN = new int[4];
-    private static final int[] RIGHTTURN = new int[4];
+    protected int direction = NORTH; // Initializes the start direction of the car
 
     public Car(int nrDoors, double enginePower, Color colour, String modelName){
         this.nrDoors = nrDoors;
@@ -28,8 +21,6 @@ public abstract class Car implements Movable{
         this.xCord = 0;
         this.yCord = 0;
         stopEngine();
-
-        this.direction = NORTH; // Initializes the start direction of the car
 
         // Fills the arrays with values corresponding to a correct left respective right turn, based on
         // what direction the car is facing.
@@ -73,8 +64,6 @@ public abstract class Car implements Movable{
         currentSpeed = 0;
     }
 
-
-
     public void move() {
         if (direction == NORTH)
             yCord = yCord + currentSpeed;
@@ -86,11 +75,9 @@ public abstract class Car implements Movable{
             xCord = xCord - currentSpeed;
     }
 
-
     public void turnLeft() {
         this.direction = LEFTTURN[direction];
     }
-
 
     public void turnRight() {
         this.direction = RIGHTTURN[direction];
