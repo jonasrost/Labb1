@@ -1,7 +1,11 @@
 import java.awt.*;
 
+/***
+ * Class that represents a Volvo240, which is a subclass to 'Car'.
+ */
 public class Volvo240 extends Car {
 
+    /*** The trim factor of the car */
     public final static double trimFactor = 1.25;
 
     /***
@@ -12,8 +16,8 @@ public class Volvo240 extends Car {
     }
 
     /***
-     * Returns the speed factor of the Volvo
-     * @return
+     * Returns the speed factor of the Volvo240
+     * @return the speed factor of the Volvo240
      */
     private double speedFactor(){
         return getEnginePower() * 0.01 * trimFactor;
@@ -24,8 +28,9 @@ public class Volvo240 extends Car {
      * (currentSpeed + (the speed factor)*amount).
      * @param amount the value to multiply the speed factor by.
      */
+    @Override
     public void incrementSpeed(double amount){
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower());
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
     }
 
     /***
@@ -33,6 +38,7 @@ public class Volvo240 extends Car {
      * (currentSpeed - (the speed factor)*amount
      * @param amount the value to multiply the speed factor by
      */
+    @Override
     public void decrementSpeed(double amount){
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
     }

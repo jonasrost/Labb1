@@ -1,7 +1,11 @@
 import java.awt.*;
 
+/***
+ * Class that represents a Saab95, which is a subclass to 'Car'.
+ */
 public class Saab95 extends Car {
 
+    /*** Keeps track of if the turbo is on or not */
     public boolean turboOn;
 
     /***
@@ -27,8 +31,8 @@ public class Saab95 extends Car {
     }
 
     /***
-     * Returns the speed factor of the Saab
-     * @return
+     * Returns the speed factor of the Saab95
+     * @return the speed factor of the Saab95
      */
     private double speedFactor(){
         double turbo = 1;
@@ -37,28 +41,34 @@ public class Saab95 extends Car {
     }
 
     /***
-     * Changes currentSpeed to (currentSpeed + (the speed factor) * amount).
+     * Changes currentSpeed to the minimum of (currentSpeed + (the speed factor) * amount)
+     * and enginePower.
      * @param amount the value that the speed factor is multiplied by.
      */
+    @Override
     public void incrementSpeed(double amount){
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
     }
 
     /***
-     * Changes currentSpeed to (currentSpeed - (the speed factor) * amount).
+     * Changes currentSpeed to the maximum of (currentSpeed - (the speed factor) * amount)
+     * and 0.
      * @param amount the value that the speed factor is multiplied by.
      */
+    @Override
     public void decrementSpeed(double amount){
-        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
 
     // TODO fix this method according to lab pm
     public void gas(double amount){
-        incrementSpeed(amount);
+        if (amount <= 1 && amount >=0)
+            this.incrementSpeed(amount);
     }
 
     // TODO fix this method according to lab pm
     public void brake(double amount){
-        decrementSpeed(amount);
+        if (amount <= 1 && amount >=0)
+            this.decrementSpeed(amount);
     }
 }

@@ -1,17 +1,28 @@
 import java.awt.*;
 
+/***
+ * An abstract class that represents a car, which implements the interface 'Movable'.
+ */
 public abstract class Car implements Movable{
 
-    protected int nrDoors; // Number of doors on the car
-    protected double enginePower; // Engine power of the car
-    protected double currentSpeed; // The current speed of the car
-    protected Color color; // Color of the car
-    protected String modelName; // The car model name
+    /*** Number of doors on the car */
+    protected int nrDoors;
+    /*** Engine power of the car */
+    protected double enginePower;
+    /*** The current speed of the car */
+    protected double currentSpeed;
+    /*** Color of the car */
+    protected Color color;
+    /*** The car model name */
+    protected String modelName;
 
-    protected double xCord = 0; // The start x coordinate of the car
-    protected double yCord = 0; // The start y coordinate of the car
+    /*** The start x coordinate of the car */
+    protected double xCord = 0;
+    /*** The start y coordinate of the car */
+    protected double yCord = 0;
 
-    protected int direction = NORTH; // Initializes the start direction of the car
+    /*** Initializes the start direction of the car */
+    protected int direction = NORTH;
 
     /***
      * Constructor of the class
@@ -29,8 +40,8 @@ public abstract class Car implements Movable{
         this.yCord = 0;
         stopEngine();
 
-        // Fills the arrays with values corresponding to a correct left respective right turn, based on
-        // what direction the car is facing.
+        // Fills the arrays with values corresponding to a correct left respective right turn,
+        // based on what direction the car is facing.
         LEFTTURN[NORTH] = WEST;
         LEFTTURN[EAST] = NORTH;
         LEFTTURN[SOUTH] = EAST;
@@ -44,7 +55,7 @@ public abstract class Car implements Movable{
 
     /***
      * Returns the number of doors of the car.
-     * @return
+     * @return the number of doors of the car
      */
     public int getNrDoors(){
         return nrDoors;
@@ -52,7 +63,7 @@ public abstract class Car implements Movable{
 
     /***
      * Returns the engine power of the car.
-     * @return
+     * @return the engine power of the car
      */
     public double getEnginePower(){
         return enginePower;
@@ -60,7 +71,7 @@ public abstract class Car implements Movable{
 
     /***
      * Returns the current speed of the car.
-     * @return
+     * @return the current speed of the car
      */
     public double getCurrentSpeed(){
         return currentSpeed;
@@ -68,7 +79,7 @@ public abstract class Car implements Movable{
 
     /***
      * Returns the color of the car.
-     * @return
+     * @return the color of the car
      */
     public Color getColor(){
         Color clr = this.color;
@@ -98,6 +109,38 @@ public abstract class Car implements Movable{
     }
 
     /***
+     * Abstract method to enable overriding in subclasses
+     * @param amount used as an multiplicator
+     */
+    public void incrementSpeed(double amount) {}
+
+    /***
+     * Abstract method to enable overriding in subclasses
+     * @param amount used as an multiplicator
+     */
+    public void decrementSpeed(double amount) {}
+
+    /***
+     * Method used to accelerate the car
+     * @param amount value to accelerate the car by
+     */
+    // TODO fix this method according to lab pm
+    public void gas(double amount){
+        if (amount <= 1 && amount >=0)
+            incrementSpeed(amount);
+    }
+
+    /***
+     * Method used to deaccelerate the car
+     * @param amount value to deaccelerate by
+     */
+    // TODO fix this method according to lab pm
+    public void brake(double amount){
+        if (amount <= 1 && amount >=0)
+            this.decrementSpeed(amount);
+    }
+
+    /***
      * Moves the car a distance currentSpeed in the direction it is facing.
      */
     public void move() {
@@ -123,5 +166,21 @@ public abstract class Car implements Movable{
      */
     public void turnRight() {
         this.direction = RIGHTTURN[direction];
+    }
+
+    /***
+     * Returns the current x-coordinate of the car
+     * @return the value of xCord
+     */
+    public double getXCoordinate(){
+        return this.xCord;
+    }
+
+    /***
+     * Returns the current y-coordinate of the car
+     * @return the value of yCord
+     */
+    public double getYCoordinate(){
+        return this.yCord;
     }
 }
