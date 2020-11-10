@@ -6,7 +6,7 @@ import java.awt.*;
 public class Saab95 extends Car {
 
     /*** Keeps track of if the turbo is on or not */
-    public boolean turboOn;
+    private boolean turboOn;
 
     /***
      * Constructor of the class that calls upon the constructor in 'Car'.
@@ -46,7 +46,7 @@ public class Saab95 extends Car {
      * @param amount the value that the speed factor is multiplied by.
      */
     @Override
-    public void incrementSpeed(double amount){
+    public void incrementSpeed(double amount) {
         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
     }
 
@@ -58,17 +58,5 @@ public class Saab95 extends Car {
     @Override
     public void decrementSpeed(double amount){
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
-    }
-
-    // TODO fix this method according to lab pm
-    public void gas(double amount){
-        if (amount <= 1 && amount >=0)
-            this.incrementSpeed(amount);
-    }
-
-    // TODO fix this method according to lab pm
-    public void brake(double amount){
-        if (amount <= 1 && amount >=0)
-            this.decrementSpeed(amount);
     }
 }

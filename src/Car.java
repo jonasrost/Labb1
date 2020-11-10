@@ -17,9 +17,9 @@ public abstract class Car implements Movable{
     protected String modelName;
 
     /*** The start x coordinate of the car */
-    protected double xCord = 0;
+    private double xCord;
     /*** The start y coordinate of the car */
-    protected double yCord = 0;
+    private double yCord;
 
     /*** Initializes the start direction of the car */
     protected int direction = NORTH;
@@ -82,8 +82,7 @@ public abstract class Car implements Movable{
      * @return the color of the car
      */
     public Color getColor(){
-        Color clr = this.color;
-        return clr;
+        return this.color;
     }
 
     /***
@@ -109,14 +108,14 @@ public abstract class Car implements Movable{
     }
 
     /***
-     * Abstract method to enable overriding in subclasses
-     * @param amount used as an multiplicator
+     * Abstract method to enable overriding in subclasses of this particular method
+     * @param amount used as an multiplier
      */
     public void incrementSpeed(double amount) {}
 
     /***
-     * Abstract method to enable overriding in subclasses
-     * @param amount used as an multiplicator
+     * Abstract method to enable overriding in subclasses of this particular method
+     * @param amount used as an multiplier
      */
     public void decrementSpeed(double amount) {}
 
@@ -124,17 +123,15 @@ public abstract class Car implements Movable{
      * Method used to accelerate the car
      * @param amount value to accelerate the car by
      */
-    // TODO fix this method according to lab pm
     public void gas(double amount){
         if (amount <= 1 && amount >=0)
-            incrementSpeed(amount);
+            this.incrementSpeed(amount);
     }
 
     /***
      * Method used to deaccelerate the car
      * @param amount value to deaccelerate by
      */
-    // TODO fix this method according to lab pm
     public void brake(double amount){
         if (amount <= 1 && amount >=0)
             this.decrementSpeed(amount);
