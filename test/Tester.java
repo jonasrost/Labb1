@@ -24,12 +24,12 @@ public class Tester {
     @Test
     public void testMoveOK() {
         Saab95 saab = new Saab95();
-
-        saab.incrementSpeed(20);
+        double speedBefore = saab.getCurrentSpeed();
+        saab.gas(0.7);
         double currSpeed = saab.getCurrentSpeed();
 
         saab.move();
 
-        assertTrue(saab.getYCoordinate() == currSpeed);
+        assertTrue(currSpeed >= speedBefore);
     }
 }

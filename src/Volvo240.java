@@ -29,7 +29,7 @@ public class Volvo240 extends Car {
      * @param amount the value to multiply the speed factor by.
      */
     @Override
-    public void incrementSpeed(double amount){
+    protected void incrementSpeed(double amount){
         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
     }
 
@@ -39,7 +39,7 @@ public class Volvo240 extends Car {
      * @param amount the value to multiply the speed factor by
      */
     @Override
-    public void decrementSpeed(double amount){
+    protected void decrementSpeed(double amount){
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
     }
 }

@@ -103,7 +103,7 @@ public abstract class Car implements Movable{
     /***
      * Sets currentSpeed to 0.
      */
-    private void stopEngine(){
+    public void stopEngine(){
         currentSpeed = 0;
     }
 
@@ -111,13 +111,13 @@ public abstract class Car implements Movable{
      * Abstract method to enable overriding in subclasses of this particular method
      * @param amount used as an multiplier
      */
-    public void incrementSpeed(double amount) {}
+    protected void incrementSpeed(double amount) {}
 
     /***
      * Abstract method to enable overriding in subclasses of this particular method
      * @param amount used as an multiplier
      */
-    public void decrementSpeed(double amount) {}
+    protected void decrementSpeed(double amount) {}
 
     /***
      * Method used to accelerate the car

@@ -46,7 +46,7 @@ public class Saab95 extends Car {
      * @param amount the value that the speed factor is multiplied by.
      */
     @Override
-    public void incrementSpeed(double amount) {
+    protected void incrementSpeed(double amount) {
         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
     }
 
@@ -56,7 +56,7 @@ public class Saab95 extends Car {
      * @param amount the value that the speed factor is multiplied by.
      */
     @Override
-    public void decrementSpeed(double amount){
+    protected void decrementSpeed(double amount){
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
 }
