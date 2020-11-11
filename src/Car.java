@@ -111,13 +111,13 @@ public abstract class Car implements Movable{
      * Abstract method to enable overriding in subclasses of this particular method
      * @param amount used as an multiplier
      */
-    protected void incrementSpeed(double amount) {}
+    protected abstract void incrementSpeed(double amount);
 
     /***
      * Abstract method to enable overriding in subclasses of this particular method
      * @param amount used as an multiplier
      */
-    protected void decrementSpeed(double amount) {}
+    protected abstract void decrementSpeed(double amount);
 
     /***
      * Method used to accelerate the car

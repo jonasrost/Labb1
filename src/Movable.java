@@ -12,23 +12,23 @@ public interface Movable {
     /*** Represents the direction west */
     int WEST = 3;
 
-    /*** Used to keep track of the cars direction when a left turn is made */
+    /*** Used to keep track of the objects direction when a left turn is made */
     int[] LEFTTURN = new int[4];
-    /*** Used to keep track of the cars direction when a right turn is made */
+    /*** Used to keep track of the objects direction when a right turn is made */
     int[] RIGHTTURN = new int[4];
 
     /***
-     * Moves the car a distance 'currentSpeed' in the direction it is facing.
+     * Moves the object a distance 'currentSpeed' in the direction it is facing.
      */
     void move();
 
     /***
-     * Changes the direction which the car is facing 90 degrees to the left.
+     * Changes the direction which the object is facing 90 degrees to the left.
      */
     void turnLeft();
 
     /***
-     * Changes the direction which the car is facing 90 degrees to the right.
+     * Changes the direction which the object is facing 90 degrees to the right.
      */
     void turnRight();
 
